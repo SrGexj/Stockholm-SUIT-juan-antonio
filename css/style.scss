@@ -1,0 +1,186 @@
+@use '_reset-edu';
+
+//Solo lo uso para estos casos.
+@import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); 
+*{
+    font-family: 'Prompt', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.Header{
+    width: 100%;
+    &-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2.8125rem 6.25rem;
+    }
+    &-wrapper{
+        display: flex; 
+    }
+    &-link{
+        text-transform: capitalize;
+        color: var(--negro);
+        padding: .3125rem 0;
+        margin: 0 1.5rem;
+        position: relative;
+        font-weight: 700;
+        font-size: .9375rem;
+        overflow: hidden;
+    }
+    @media (max-width:64rem){
+       &-container{
+        padding: 2.8125rem 3.125rem;
+       }
+    }
+    @media (max-width:47.9375rem){
+        &-logo{
+            width: 100%;
+        }
+        &-logoLink{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        &-img{
+            width: 40%;
+        }
+        &-nav{
+            display: none;
+        }
+    }
+}
+.Header-link{
+    &.isActive{
+        &::after{
+            content: "";
+            background-color: var(--negro);
+            position: absolute;
+            width: 100%;
+            height: .0625rem;
+            transform: scaleX(1);
+        }
+    }
+}
+
+.isHover{
+    position: relative;
+    &::after{
+        content: "";
+        background-color: var(--negro);
+        position: absolute;
+        width: 100%;
+        height: .0625rem;
+        transform: scaleX(0);
+        transition: transform .25s ease-in-out;
+        transform-origin: bottom right;
+    }
+    &:hover::after{
+            content: "";
+            background-color: var(--negro);
+            position: absolute;
+            width: 100%;
+            height: .0625rem;
+            opacity: 1;
+            transform: scaleX(1);
+            transform-origin: bottom left;
+    }
+}
+
+.Content{
+    padding: 6.25rem;
+    &-section{
+        max-width: 60%;
+    }
+    &-title{
+        font-size:1.875rem;
+        font-weight: 400;
+    }
+    &-gallery{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2.5rem;
+        padding: 6.25rem 0 0 0;
+    }
+    @media(max-width:64rem) {
+        padding: 1.25rem;
+        &-gallery{
+         grid-template-columns:repeat(2, 1fr);
+        }
+        &-section{
+            max-width: 100%;
+        }
+     }
+    @media(max-width:47.9375rem) {
+        padding: 1.25rem;
+        &-gallery{
+         grid-template-columns:repeat(1, 1fr);
+        }
+        &-section{
+            max-width: 100%;
+        }
+     }
+}
+
+.Footer{
+    padding: 0rem 6.25rem;
+    &-more{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     padding: 0 0 6.25rem 0;
+    }
+    &-link{
+        width: fit-content;
+        text-align: center;
+        color: var(--negro);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        font-weight: 500;
+        gap: .625rem;
+        &::before{
+            content: "\2197";
+        }
+    }
+    &-sub{
+        padding: 1.25rem 0 1.875rem 0;
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        &::after{
+            content: "";
+            background: #d8d8d8;
+            height: .0625rem;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }        
+    }
+    &-nav{
+        display: flex;
+        gap: .625rem;
+    }
+    &-text{
+        font-size: .875rem;
+    }
+    @media(max-width:64rem) {
+        padding: 1.25rem;
+        &-more{
+            padding: 0 0 2.1875rem 0;
+        }
+    }
+    @media(max-width:47.9375rem) {
+        &-sub{
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        &-nav{
+            margin-top: 1.25rem;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+     }
+}

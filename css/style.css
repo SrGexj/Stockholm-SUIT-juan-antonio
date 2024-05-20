@@ -1,0 +1,326 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+/* Definimos las Custom properties */
+:root {
+  /* Colores */
+  --negro: #393939;
+  --main-color: #7a48e6;
+  /* Tipografía */
+  --tipo-principal: Helvetica, Arial, sans-serif;
+  --tipo-secundaria: Verdana;
+}
+
+/* (Opcional) Configuramos si un usuario ha activado el modo alto contraste. (WD) */
+/* (Opcional) Desactivamos los animations en el caso de que el usuario haya configurado el modo sin animation */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+/* Reseteamos los margin y paddings de todas las etiquetas */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  vertical-align: baseline;
+}
+
+*::before, *::after {
+  display: block;
+}
+
+/* Evitamos problemas con las imagenes */
+img, picture, video, iframe, figure {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+  /* (Opcional) */
+  -o-object-fit: cover;
+     object-fit: cover;
+  /* (Opcional) */
+  -o-object-position: center center;
+     object-position: center center;
+}
+
+/* Reseteamos los enlaces para funcionar como cajas... */
+a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit;
+}
+
+/* ... excepto los que se encuentran en párrafos */
+p a {
+  display: inline;
+}
+
+/* Quitamos los puntos de los <li> */
+li {
+  list-style-type: none;
+}
+
+/* (Opcional) Configuramos anclas suaves */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Desactivamos estilos por defecto de las principales etiquetas de texto */
+h1, h2, h3, h4, h5, h6, p, span, a, strong, blockquote, i, b, u, em {
+  font-size: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Evitamos problemas con los pseudoelementos de quotes */
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+
+/* (Opcional) Configuramos el texto que seleccionamos */
+::-moz-selection {
+  background-color: var(--negro);
+  color: var(--blanco);
+}
+::selection {
+  background-color: var(--negro);
+  color: var(--blanco);
+}
+
+/* Nivelamos problemas de tipografías y colocación de formularios */
+form, input, textarea, select, button, label {
+  font-family: inherit;
+  font-size: inherit;
+  -webkit-hyphens: auto;
+          hyphens: auto;
+  background-color: transparent;
+  color: inherit;
+  display: block;
+  /* (Opcional) */
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+/* Reseteamos las tablas */
+table, tr, td {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Evitamos problemas con los SVG */
+svg {
+  width: 100%;
+  display: block;
+  fill: currentColor;
+}
+
+/* Configuramos la tipografía para toda la web */
+body {
+  min-height: 100vh;
+  font-size: 100%;
+  font-family: var(--tipo-principal);
+  color: var(--negro);
+  /* (Opcional) */
+  -webkit-hyphens: auto;
+          hyphens: auto;
+  /* (Opcional) */
+  font-smooth: always;
+  /* (Opcional) */
+  -webkit-font-smoothing: antialiased;
+  /* (Opcional) */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  font-family: "Prompt", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.Header {
+  width: 100%;
+}
+.Header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.8125rem 6.25rem;
+}
+.Header-wrapper {
+  display: flex;
+}
+.Header-link {
+  text-transform: capitalize;
+  color: var(--negro);
+  padding: 0.3125rem 0;
+  margin: 0 1.5rem;
+  position: relative;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  overflow: hidden;
+}
+@media (max-width: 64rem) {
+  .Header-container {
+    padding: 2.8125rem 3.125rem;
+  }
+}
+@media (max-width: 47.9375rem) {
+  .Header-logo {
+    width: 100%;
+  }
+  .Header-logoLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .Header-img {
+    width: 40%;
+  }
+  .Header-nav {
+    display: none;
+  }
+}
+
+.Header-link.isActive::after {
+  content: "";
+  background-color: var(--negro);
+  position: absolute;
+  width: 100%;
+  height: 0.0625rem;
+  transform: scaleX(1);
+}
+
+.isHover {
+  position: relative;
+}
+.isHover::after {
+  content: "";
+  background-color: var(--negro);
+  position: absolute;
+  width: 100%;
+  height: 0.0625rem;
+  transform: scaleX(0);
+  transition: transform 0.25s ease-in-out;
+  transform-origin: bottom right;
+}
+.isHover:hover::after {
+  content: "";
+  background-color: var(--negro);
+  position: absolute;
+  width: 100%;
+  height: 0.0625rem;
+  opacity: 1;
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.Content {
+  padding: 6.25rem;
+}
+.Content-section {
+  max-width: 60%;
+}
+.Content-title {
+  font-size: 1.875rem;
+  font-weight: 400;
+}
+.Content-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
+  padding: 6.25rem 0 0 0;
+}
+@media (max-width: 64rem) {
+  .Content {
+    padding: 1.25rem;
+  }
+  .Content-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .Content-section {
+    max-width: 100%;
+  }
+}
+@media (max-width: 47.9375rem) {
+  .Content {
+    padding: 1.25rem;
+  }
+  .Content-gallery {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .Content-section {
+    max-width: 100%;
+  }
+}
+
+.Footer {
+  padding: 0rem 6.25rem;
+}
+.Footer-more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0 6.25rem 0;
+}
+.Footer-link {
+  width: -moz-fit-content;
+  width: fit-content;
+  text-align: center;
+  color: var(--negro);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  gap: 0.625rem;
+}
+.Footer-link::before {
+  content: "↗";
+}
+.Footer-sub {
+  padding: 1.25rem 0 1.875rem 0;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.Footer-sub::after {
+  content: "";
+  background: #d8d8d8;
+  height: 0.0625rem;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.Footer-nav {
+  display: flex;
+  gap: 0.625rem;
+}
+.Footer-text {
+  font-size: 0.875rem;
+}
+@media (max-width: 64rem) {
+  .Footer {
+    padding: 1.25rem;
+  }
+  .Footer-more {
+    padding: 0 0 2.1875rem 0;
+  }
+}
+@media (max-width: 47.9375rem) {
+  .Footer-sub {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .Footer-nav {
+    margin-top: 1.25rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}/*# sourceMappingURL=style.css.map */
